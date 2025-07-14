@@ -57,7 +57,7 @@ public class BaseTest {
     }
 
     // Type text into input
-    protected void type(String locator, String text) {
+    protected void fillInput(String locator, String text) {
         page.locator(locator).fill(text); // fill input
     }
 
@@ -89,5 +89,10 @@ public class BaseTest {
     // Wait for X milliseconds
     protected void waitFor(int ms) {
         page.waitForTimeout(ms); // delay execution
+    }
+
+    // Hover over an element
+    protected void hover(String locator) {
+        page.locator(locator).hover(); // move the mouse over the element
     }
 }

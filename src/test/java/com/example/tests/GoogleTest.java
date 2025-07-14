@@ -17,7 +17,7 @@ public class GoogleTest extends BaseTest {
         }
 
         // Fill the search field
-        type(GooglePage.searchInput, "NTNU");
+        fillInput(GooglePage.searchInput, "NTNU");
         pressEnter();
 
         // Wait for the result to load
