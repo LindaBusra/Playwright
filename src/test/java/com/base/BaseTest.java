@@ -1,6 +1,7 @@
 package com.base;
 
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.SelectOption;
 import org.junit.jupiter.api.*;
 
 import java.nio.file.Paths;
@@ -96,7 +97,15 @@ public class BaseTest {
         page.locator(locator).hover(); // move the mouse over the element
     }
 
+    // Check if specific text exists anywhere on the page
+    protected boolean isTextPresent(String text) {
+        return page.locator("body").innerText().contains(text); // search for text inside the body
+    }
 
+    // Select an option from a dropdown by visible label
+    protected void selectOptionByText(String locator, String visibleText) {
+        page.locator(locator).selectOption(new SelectOption().setLabel(visibleText)); // select option by its label
+    }
 
 
 
