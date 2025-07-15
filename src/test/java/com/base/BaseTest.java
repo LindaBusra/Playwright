@@ -95,4 +95,9 @@ public class BaseTest {
     protected void hover(String locator) {
         page.locator(locator).hover(); // move the mouse over the element
     }
+
+
+
+
+
 }
