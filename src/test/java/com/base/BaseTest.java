@@ -117,6 +117,16 @@ public class BaseTest {
         page.locator(locator).check(); // mark checkbox as checked
     }
 
+    // Uncheck a checkbox (if it's currently checked)
+    protected void uncheck(String locator) {
+        page.locator(locator).uncheck(); // uncheck checkbox
+    }
+
+    // Check if element exists in the DOM (regardless of visibility)
+    protected boolean isElementPresent(String locator) {
+        return page.locator(locator).count() > 0; // element count > 0 means it exists
+    }
+
 
 
 }
