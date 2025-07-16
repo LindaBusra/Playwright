@@ -107,6 +107,16 @@ public class BaseTest {
         page.locator(locator).selectOption(new SelectOption().setLabel(visibleText)); // select option by its label
     }
 
+    // Select an option from a dropdown by its value attribute
+    protected void selectOptionByValue(String locator, String value) {
+        page.locator(locator).selectOption(value); // select option by its value attribute
+    }
+
+    // Check a checkbox (if not already checked)
+    protected void check(String locator) {
+        page.locator(locator).check(); // mark checkbox as checked
+    }
+
 
 
 }
