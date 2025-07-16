@@ -117,9 +117,24 @@ public class BaseTest {
         page.locator(locator).check(); // mark checkbox as checked
     }
 
+    protected void checkIfNotChecked(String locator) {
+        Locator element = page.locator(locator);
+        if (!element.isChecked()) {
+            element.check(); // only check if not already checked
+        }
+    }
+
     // Uncheck a checkbox (if it's currently checked)
     protected void uncheck(String locator) {
         page.locator(locator).uncheck(); // uncheck checkbox
+    }
+
+    // Uncheck a checkbox only if it is currently checked
+    protected void uncheckIfChecked(String locator) {
+        Locator element = page.locator(locator);
+        if (element.isChecked()) {
+            element.uncheck(); // if checked, uncheck it
+        }
     }
 
     // Check if element exists in the DOM (regardless of visibility)
