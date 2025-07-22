@@ -142,6 +142,15 @@ public class BaseTest {
         return page.locator(locator).count() > 0; // element count > 0 means it exists
     }
 
+    // Click on element using JavaScript (for tricky elements)
+    protected void jsClick(String locator) {
+        page.evaluate("element => element.click()", page.locator(locator)); // use JS to click the element
+    }
+
+    // Wait until the page has fully loaded
+    protected void waitForPageLoad() {
+        page.waitForLoadState(LoadState.LOAD); // wait for the 'load' state of the page
+    }
 
 
 }
