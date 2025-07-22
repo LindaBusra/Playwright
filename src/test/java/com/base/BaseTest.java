@@ -1,6 +1,7 @@
 package com.base;
 
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.LoadState;
 import com.microsoft.playwright.options.SelectOption;
 import org.junit.jupiter.api.*;
 
@@ -152,5 +153,14 @@ public class BaseTest {
         page.waitForLoadState(LoadState.LOAD); // wait for the 'load' state of the page
     }
 
+    // Listen for and print all console logs from the page (useful for debugging)
+    protected void logConsoleMessages() {
+        page.onConsoleMessage(msg -> System.out.println("Console log: " + msg.text())); // print all console messages
+    }
+
+    // Upload a file to an input[type='file']
+    protected void uploadFile(String locator, String filePath) {
+        page.locator(locator).setInputFiles(Paths.get(filePath)); // upload file from local system
+    }
 
 }
