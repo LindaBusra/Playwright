@@ -163,4 +163,22 @@ public class BaseTest {
         page.locator(locator).setInputFiles(Paths.get(filePath)); // upload file from local system
     }
 
+    // Scroll to a specific element
+    protected void scrollToElement(String locator) {
+        page.locator(locator).scrollIntoViewIfNeeded(); // scroll the page to bring the element into view
+    }
+
+    // Get an attribute's value from an element
+    protected String getAttribute(String locator, String attribute) {
+        return page.locator(locator).getAttribute(attribute); // fetch specific attribute's value
+    }
+
+    // Clear input field before typing (sometimes needed explicitly)
+    protected void clearAndFillInput(String locator, String text) {
+        Locator element = page.locator(locator);
+        element.clear(); // clear input
+        element.fill(text); // then fill
+    }
+
+
 }
