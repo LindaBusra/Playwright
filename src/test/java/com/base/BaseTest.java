@@ -3,6 +3,7 @@ package com.base;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.LoadState;
 import com.microsoft.playwright.options.SelectOption;
+import com.microsoft.playwright.options.WaitForSelectorState;
 import org.junit.jupiter.api.*;
 
 import java.nio.file.Paths;
@@ -187,6 +188,22 @@ public class BaseTest {
         while (!element.isEnabled()) {
             page.waitForTimeout(100); // wait and recheck
         }
+    }
+
+    // Automatically accept JavaScript dialogs like alert, confirm, prompt
+    protected void autoAcceptDialogs() {
+        page.onDialog(dialog -> {
+            System.out.println("Dialog message: " + dialog.message()); // log dialog message
+            dialog.accept(); // accept the dialog
+        });
+    }
+
+    // Automatically dismiss JavaScript dialogs like alert, confirm, prompt
+    protected void autoDismissDialogs() {
+        page.onDialog(dialog -> {
+            System.out.println("Dialog message: " + dialog.message()); // log dialog message
+            dialog.dismiss(); // dismiss the dialog
+        });
     }
 
 
