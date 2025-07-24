@@ -180,5 +180,14 @@ public class BaseTest {
         element.fill(text); // then fill
     }
 
+    // Wait for element to be visible and enabled (ready to click)
+    protected void waitForElementToBeClickable(String locator) {
+        Locator element = page.locator(locator);
+        element.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
+        while (!element.isEnabled()) {
+            page.waitForTimeout(100); // wait and recheck
+        }
+    }
+
 
 }
