@@ -7,6 +7,7 @@ import com.microsoft.playwright.options.WaitForSelectorState;
 import org.junit.jupiter.api.*;
 
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class BaseTest {
 
@@ -164,6 +165,13 @@ public class BaseTest {
         page.locator(locator).setInputFiles(Paths.get(filePath)); // upload file from local system
     }
 
+    // Upload multiple files at once
+    protected void uploadMultipleFiles(String fileInputLocator, String... filePaths) {
+        page.locator(fileInputLocator).setInputFiles(
+                Arrays.stream(filePaths).map(Paths::get).toArray(java.nio.file.Path[]::new)
+        );
+    }
+
     // Scroll to a specific element
     protected void scrollToElement(String locator) {
         page.locator(locator).scrollIntoViewIfNeeded(); // scroll the page to bring the element into view
@@ -215,6 +223,9 @@ public class BaseTest {
         newPage.waitForLoadState(); // wait for the new page to load
         return newPage;
     }
+
+
+
 
 
 }
