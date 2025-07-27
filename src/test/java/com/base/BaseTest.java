@@ -207,4 +207,14 @@ public class BaseTest {
     }
 
 
+    // Handle and return newly opened tab after an action (like clicking a link)
+    protected Page switchToNewTab(Runnable actionThatOpensTab) {
+        Page newPage = context.waitForPage(() -> {
+            actionThatOpensTab.run(); // perform action that opens new tab
+        });
+        newPage.waitForLoadState(); // wait for the new page to load
+        return newPage;
+    }
+
+
 }
