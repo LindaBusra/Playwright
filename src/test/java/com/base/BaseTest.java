@@ -225,6 +225,12 @@ public class BaseTest {
     }
 
 
+    // Click multiple elements in sequence (by their locators)
+    protected void clickMultiple(String... locators) {
+        for (String locator : locators) {
+            page.locator(locator).click(); // each element clicked in order
+        }
+    }
 
 
 
